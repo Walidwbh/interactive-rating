@@ -1,6 +1,6 @@
 // add active class to a rate
 const rates = Array.from(document.querySelectorAll('.rate li'));
-const submit = document.querySelector("button");
+
 let rate = 0;
 rates.forEach((element, index)=>{
     element.addEventListener(("click"), (event)=>{
@@ -10,15 +10,16 @@ rates.forEach((element, index)=>{
         if(event.target.classList.contains("active")){
             rate = Number(element.dataset.rate);
             submit.disabled = false;
-            // console.log(rate)
         }else{
             rate = 0;
             submit.disabled = true;
         }
     });
 })
-submit.addEventListener("click", (event)=>{
-
+//display exit when submitting a rate
+const submit = document.querySelector("button");
+submit.addEventListener("click", ()=>{
+    document.querySelector(".rating").style.display = "none";
+    document.querySelector(".exit").style.display = "block";
+    document.querySelector("span.given-rate").innerHTML = rate+" "
 });
-
-// console.log("outside",rate)
